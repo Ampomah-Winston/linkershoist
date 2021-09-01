@@ -1,21 +1,22 @@
-const Pool = require('pg').Pool;//postgres connection library
+const {Pool} = require('pg');//postgres connection library
+// const {Client} = require('pg');
 require('dotenv').config();
-var parse = require('pg-connection-string').parse; 
-var devConfig = parse(`postgres://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`)
+const parse = require('pg-connection-string').parse; 
+const devConfig = parse(`postgres://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`)
 
-// const devConfig = {
-//     user : process.env.PG_USER,
-//     password: process.env.PG_PASSWORD,
-//     port: process.env.PG_PORT,
-//     host: process.env.PG_HOST,
-//     database: process.env.PG_DATABASE
-// }
-const proConfig =  process.env.DATABASE_URL //heroku addons 
+// const client = new Client({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: {
+//       rejectUnauthorized: true
+//     }
+//   });
 
-const pool = new Pool(
-    process.env.NODE_ENV === 'production' ?{ connectionString : proConfig} :devConfig
-);
+// client.connect();
 
-// const pool = new Pool(devConfig)
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL ,
+  ssl: process.env.DATABASE_URL ? true : false
+})
 
-module.exports = pool
+// module.exports = client;
+module.exports = pool;
