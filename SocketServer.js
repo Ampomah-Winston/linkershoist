@@ -6,16 +6,7 @@ const cors = require('cors');
 const app = express();// init express
 
 app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200
-}));
-
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+app.use(cors());
 
 class SocketServer{
     constructor(portNumber = 4000){   
@@ -35,8 +26,6 @@ class SocketServer{
            
             socket.on('join_room', data=>{ 
                 socket.join(data.group);
-                console.log('time -> ',data.time);
-
             });
 
             //receive message to room
@@ -50,12 +39,6 @@ class SocketServer{
                     time: data.time ? data.time : '00:00:00'
                 });
             })
-            /////////////////////
-            // socket.on('flapMessage',data=>{
-            //     data.dir = "out"
-            //     socket.emit('flapMessage', data);
-            //     console.log('Hello winston', data);
-            // });
 
             // runs when a user disconnects
             socket.on('disconnect',socket=>{

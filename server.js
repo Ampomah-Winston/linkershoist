@@ -198,17 +198,6 @@ app.post('/users/id', async (req,res)=>{
         }
     })
 
-
-    let buttData;
-    function getSing(id){  
-        Axios.post('http://localhost:5000/users/id',{
-             user_id : id
-        }).then(res=>{
-            console.log(res)
-            return res;
-        })       
-    }
-
     //get a chatid
     app.post('/singlechat/getAll',async(req,res)=>{
         const {userID} = req.body;
