@@ -19,7 +19,7 @@ import moment from 'moment'
 
 let socket = {};
 const CONNECTION_URL = 'http://lynkers.herokuapp.com';
-export default function ProfileBodyCenter(props) {
+export default function ProfileBodyCenter() {
     //get message state from redux-state
     const message = useSelector(state => state.messenger);
     const messageList = useSelector(state => state.messageList);//this is an array of all messages
@@ -102,7 +102,7 @@ export default function ProfileBodyCenter(props) {
 
     return (
         <div className="ProfileBody-Body-center top-center-content">
-            <span> Linked with <span> ~ {gname.toUpperCase()} ~ </span> </span>
+            <span> Linked with  ~ {gname.toUpperCase()} ~  </span>
             <div className="chat-body">
                 {
                     messageList.map((message) => {
