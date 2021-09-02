@@ -18,7 +18,7 @@ import { setSocket } from '../../../actions/socketSetAction';
 import moment from 'moment'
 
 let socket = {};
-const CONNECTION_URL = 'lynkers.herokuapp.com';
+const CONNECTION_URL = 'http://lynkers.herokuapp.com';
 export default function ProfileBodyCenter(props) {
     //get message state from redux-state
     const message = useSelector(state => state.messenger);
@@ -63,8 +63,6 @@ export default function ProfileBodyCenter(props) {
             data.dir = 'in';
             dispatch(addToList(data));
         })
-
-
     }, [gname]);
 
     //the useEffect below listens to when chatref changes, then we make user join the new room
@@ -117,10 +115,7 @@ export default function ProfileBodyCenter(props) {
             {/* value={props.outMsg}   */}
             <div className="chat-composition">
                 <div className="textMsg-box">
-                    <textarea value={message} onChange={handleComposer} placeholder="Composer message here ...." style={{
-                      
-                    }}>
-
+                    <textarea value={message} onChange={handleComposer} placeholder="Composer message here ...." >
                     </textarea>
                 </div>
                 <div className="textMsg-control-box" onClick={handleSubmitMessage}>
