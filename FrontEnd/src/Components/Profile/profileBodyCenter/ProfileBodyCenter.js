@@ -18,7 +18,7 @@ import { setSocket } from '../../../actions/socketSetAction';
 import moment from 'moment'
 
 let socket = {};
-const CONNECTION_URL = 'http://localhost:4000/';
+const CONNECTION_URL = 'lynkers.herokuapp.com';
 export default function ProfileBodyCenter(props) {
     //get message state from redux-state
     const message = useSelector(state => state.messenger);
