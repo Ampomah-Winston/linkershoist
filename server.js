@@ -67,7 +67,7 @@ app.post('/users/register', async (req,res)=>{
     }
 });
 
-//insert users
+//insert google users
 app.post('/users/register/google', async (req,res)=>{
     try {
         const {googleid,fname,lname,email} = req.body.userobj;
