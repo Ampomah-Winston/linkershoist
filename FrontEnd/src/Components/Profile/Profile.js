@@ -10,6 +10,15 @@ export default function Profile(props) {
     const authorized = useSelector(state => state.authorized)
     const profileData = useSelector(state => state.profileData)
 
+    const style = {
+        width: '100%',
+        height: '90%',
+        backgrounColor: 'darkslategray',
+        color:'khaki',
+        display: 'flex',
+        marginTop: '10px'
+    }
+
     if(!authorized) {
         return <Redirect to="/App" />
     }
@@ -18,14 +27,7 @@ export default function Profile(props) {
         <div className="profile-body">
             <ProfileNav />
             {/* <ProfileBody messageList = {messageList} outMsg = {composer_msg} handleComposer = {handleComposer} handleSubmitMessage = {handleSubmitMessage} /> */}
-            <div  style={{
-                width: '100%',
-                height: '90%',
-                backgrounColor: 'darkslategray',
-                color:'khaki',
-                display: 'flex',
-                marginTop: '10px'
-            }}>
+            <div  style={style}>
                 <ProfileBodyLeft userData = {profileData} />
                 <ProfileBodyCenter userData = {profileData} />
                 <ProfileBodyRight userData = {profileData} />
